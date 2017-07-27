@@ -12,36 +12,52 @@
         var RANDOM_NUMBER = Math.floor(Math.random() * WORDS.length)
 
         var playing = true;
-
-        while (playing) {
-
-            var word = WORDS[RANDOM_NUMBER];
-            var scramble = SCRAMBLED[RANDOM_NUMBER];
-            var guess = prompt("Please guess the original word of " + scramble);
-
-            if (guess != word) {
-                alert("Sorry! That's incorrect. The correct word is " + word);
+        var word = prompt("Please enter a word")
+        
+        function scramble(word) {
+            letters = word.split("");
+            var word_length = letters.length;
+            var newWord = [];
+            for (var letter_counter = 0; letter_counter < word_length; letter_counter++) {
+                var num_index = Math.floor(Math.random() * letters.length);
+                newWord.push(letters[num_index]);
+                letters = letters.slice(0, num_index).concat(letters.slice(num_index+1, letters.length));
             }
-            else {
-                alert("Yay! That's correct.");
-            }
-            // Grab a random word from the WORDS array.
+            return  newWord.join('')
 
-            // Grab the corresponding scrambled word from the SCRAMBLED array.
-
-            // Prompt the user to guess the original word when given the scrambled word.
-
-            // If the user guesses wrong, tell them they were wrong and show the right word.
-            
-            // If the user guesses the correct word, congratulate them.
-
-            playing = confirm("Click OK to play again and cancel to exit");
-
-            // What does confirm() return?
-            // What does setting the playing variable do?
         }
 
-        alert("goodbye!");
+        scramble(word);
+
+        // while (playing) {
+
+        //     var word = WORDS[RANDOM_NUMBER];
+        //     var scramble = SCRAMBLED[RANDOM_NUMBER];
+        //     var guess = prompt("Please guess the original word of " + scramble);
+
+        //     if (guess != word) {
+        //         alert("Sorry! That's incorrect. The correct word is " + word);
+        //     }
+        //     else {
+        //         alert("Yay! That's correct.");
+        //     }
+        //     // Grab a random word from the WORDS array.
+
+        //     // Grab the corresponding scrambled word from the SCRAMBLED array.
+
+        //     // Prompt the user to guess the original word when given the scrambled word.
+
+        //     // If the user guesses wrong, tell them they were wrong and show the right word.
+            
+        //     // If the user guesses the correct word, congratulate them.
+
+        //     playing = confirm("Click OK to play again and cancel to exit");
+
+        //     // What does confirm() return?
+        //     // What does setting the playing variable do?
+        // }
+
+        // alert("goodbye!");
     </script>
     
 </body>
